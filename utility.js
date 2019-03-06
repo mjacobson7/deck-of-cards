@@ -19,7 +19,7 @@ module.exports = {
     getNewDeck: () => {
         return axios.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
             .then(res => {
-                console.log('Shuffling new deck... \n');
+                console.log('Shuffling new deck. Please wait... \n');
                 return res.data.deck_id;
             })
             .catch(error => {
@@ -53,7 +53,6 @@ module.exports = {
     },
 
     sortResults: () => {
-        console.log(`Gathering results, please wait... \n`)
         for (suit in cardMap) {
             let sortedSuitArr = cardMap[suit].sort((a, b) => {
                 [a, b] = [a, b].map(val => valueMap[val] ? valueMap[val] : parseInt(val));
